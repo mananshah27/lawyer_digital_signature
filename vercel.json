@@ -1,13 +1,18 @@
 {
   "version": 2,
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist/public",
-  "framework": "vite",
+  "buildCommand": "cd client && npm run build",
+  "outputDirectory": "client/dist",
+  "devCommand": "cd client && npm run dev",
   "installCommand": "npm install",
+  "framework": "vite",
   "rewrites": [
     {
-      "source": "/api/:path*",
+      "source": "/api/(.*)",
       "destination": "/api"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/"
     }
   ],
   "functions": {
@@ -17,7 +22,6 @@
     }
   },
   "env": {
-    "NODE_ENV": "production",
-    "VERCEL": "1"
+    "NODE_ENV": "production"
   }
 }
